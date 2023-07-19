@@ -13,6 +13,8 @@
         <el-row style="display:flex">
           <el-button type="primary" icon="el-icon-search" size="mini" :loading="loading" @click="fetchData()">搜索</el-button>
           <el-button icon="el-icon-refresh" size="mini" @click="resetData">重置</el-button>
+          <el-button type="success" icon="el-icon-plus" size="mini" :disabled="$hasBP('bnt.sysRole.add')  === false" @click="add">添 加</el-button>
+          <el-button class="btn-add" size="mini" @click="batchRemove()" >批量删除</el-button>
         </el-row>
       </el-form>
     </div>
@@ -47,11 +49,7 @@
         </template>
       </el-table-column>
     </el-table>
-<!-- 工具条 -->
-    <div class="tools-div">
-        <el-button type="success" icon="el-icon-plus" size="mini" :disabled="$hasBP('bnt.sysRole.add')  === false" @click="add">添 加</el-button>
-        <el-button class="btn-add" size="mini" @click="batchRemove()" >批量删除</el-button>
-    </div>
+
     <!-- 分页组件 -->
     <el-pagination
         :current-page="page"
