@@ -26,14 +26,12 @@
         <el-row style="display:flex">
           <el-button type="primary" icon="el-icon-search" size="mini" :loading="loading" @click="fetchData()">搜索</el-button>
           <el-button icon="el-icon-refresh" size="mini" @click="resetData">重置</el-button>
+          <el-button type="success" icon="el-icon-plus" size="mini" @click="add">添 加</el-button>
         </el-row>
       </el-form>
     </div>
 
-    <!-- 工具条 -->
-    <div class="tools-div">
-      <el-button type="success" icon="el-icon-plus" size="mini" @click="add">添 加</el-button>
-    </div>
+
 
     <!-- 列表 -->
     <el-table
@@ -299,11 +297,11 @@ export default {
 
     getRoles () {
       roleApi.getRoles(this.sysUser.id).then(response => {
-        const {allRolesList, assginRoleList} = response.data
+        const {allRolesList, assignRoleList} = response.data
         this.allRoles = allRolesList
-        this.userRoleIds = assginRoleList.map(item => item.id)
-        this.checkAll = allRolesList.length===assginRoleList.length
-        this.isIndeterminate = assginRoleList.length>0 && assginRoleList.length<allRolesList.length
+        this.userRoleIds = assignRoleList.map(item => item.id)
+        this.checkAll = allRolesList.length===assignRoleList.length
+        this.isIndeterminate = assignRoleList.length>0 && assignRoleList.length<allRolesList.length
       })
     },
 

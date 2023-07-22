@@ -14,7 +14,7 @@
           <el-button type="primary" icon="el-icon-search" size="mini" :loading="loading" @click="fetchData()">搜索</el-button>
           <el-button icon="el-icon-refresh" size="mini" @click="resetData">重置</el-button>
           <el-button type="success" icon="el-icon-plus" size="mini" :disabled="$hasBP('bnt.sysRole.add')  === false" @click="add">添 加</el-button>
-          <el-button class="btn-add" size="mini" @click="batchRemove()" >批量删除</el-button>
+          <el-button class="btn-add" size="mini" :disabled="$hasBP('bnt.sysRole.remove')  === false" @click="batchRemove()" >批量删除</el-button>
         </el-row>
       </el-form>
     </div>
@@ -43,9 +43,9 @@
       <el-table-column prop="createTime" label="创建时间" width="160"/>
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" size="mini" @click="edit(scope.row.id)" title="修改"/>
-          <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeDataById(scope.row.id)" title="删除"/>
-          <el-button type="warning" icon="el-icon-baseball" size="mini" @click="showAssignAuth(scope.row)" title="分配权限"/>
+          <el-button type="primary" icon="el-icon-edit" size="mini" :disabled="$hasBP('bnt.sysRole.update')  === false" @click="edit(scope.row.id)" title="修改"/>
+          <el-button type="danger" icon="el-icon-delete" size="mini" :disabled="$hasBP('bnt.sysRole.remove')  === false" @click="removeDataById(scope.row.id)" title="删除"/>
+          <el-button type="warning" icon="el-icon-baseball" size="mini" :disabled="$hasBP('bnt.sysRole.assignAuth')  === false" @click="showAssignAuth(scope.row)" title="分配权限"/>
         </template>
       </el-table-column>
     </el-table>
